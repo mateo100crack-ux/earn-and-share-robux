@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>earn and share robux</title>
+
+<style>
+body{
+font-family: Arial;
+text-align: center;
+background-color: #111;
+color: white;
+}
+
+input, button{
+padding:10px;
+margin:5px;
+font-size:16px;
+}
+
+button{
+background-color: green;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#mensaje{
+margin-top:20px;
+padding:15px;
+background-color:green;
+color:white;
+display:none;
+border-radius:5px;
+}</style>
+
+</head>
+
+<body>
+
+<h1>Gana Robux</h1>
+
+<h2>Robux disponibles: <span id="contador">3000000</span></h2>
+
+<br>
+
+<input type="text" id="usuario" placeholder="Nombre de usuario">
+
+<br>
+
+<input type="number" id="cantidad" placeholder="Cantidad de Robux">
+
+<br>
+
+<button onclick="enviar()">Enviar</button>
+
+<div id="mensaje"></div>
+
+<script>
+
+let robux = 3000000;
+
+function enviar(){
+
+let usuario = document.getElementById("usuario").value;
+let cantidad = Number(document.getElementById("cantidad").value);
+
+if(cantidad <= robux && cantidad > 0){
+
+robux = robux - cantidad;
+
+document.getElementById("contador").innerText = robux;
+let mensaje = document.getElementById("mensaje");
+
+mensaje.style.display = "block";
+mensaje.innerText = "Se enviaron " + cantidad + " Robux a " + usuario;
+
+}else{
+
+alert("No hay suficientes Robux");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
