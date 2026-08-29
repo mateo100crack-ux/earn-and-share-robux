@@ -1,88 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>earn and share robux</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earn & Share Robux</title>
 <style>
-body{
-font-family: Arial;
-text-align: center;
-background-color: #111;
-color: white;
-}
-
-input, button{
-padding:10px;
-margin:5px;
-font-size:16px;
-}
-
-button{
-background-color: green;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-#mensaje{
-margin-top:20px;
-padding:15px;
-background-color:green;
-color:white;
-display:none;
-border-radius:5px;
-}</style>
-
+:root{--green:#35f000;--green2:#18b900;--bg:#050706;--card:#0b120d;--text:#f5f7f5;--muted:#aab4aa}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 50% -10%,#123b13 0,#050706 42%);color:var(--text);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(53,240,0,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(53,240,0,.025) 1px,transparent 1px);background-size:45px 45px}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:10;background:rgba(3,6,4,.88);backdrop-filter:blur(14px);border-bottom:1px solid #163719}
+.logo{font-size:22px;font-weight:900;letter-spacing:.5px}.logo span{color:var(--green)}
+nav a{color:#ddd;text-decoration:none;margin:0 16px;font-weight:700;font-size:14px}nav a:hover{color:var(--green)}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--green),#13a900);color:#031000;text-decoration:none;font-weight:900;padding:15px 24px;border-radius:10px;box-shadow:0 0 24px rgba(53,240,0,.22);transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(53,240,0,.38)}
+.hero{min-height:610px;display:flex;align-items:center;padding:70px 7%;position:relative;isolation:isolate;background:linear-gradient(90deg,rgba(2,6,3,.96) 0%,rgba(2,6,3,.82) 45%,rgba(2,6,3,.3) 100%),url("hero.png") center/cover}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(transparent,var(--bg));z-index:-1}
+.hero-content{max-width:620px}.eyebrow{color:var(--green);font-weight:900;letter-spacing:2px;margin-bottom:14px}
+h1{font-size:clamp(46px,6vw,82px);line-height:.95;margin-bottom:20px}h1 span{color:var(--green)}
+.hero p{font-size:20px;line-height:1.55;color:#d3d8d3;max-width:560px;margin-bottom:30px}
+.badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.badge{border:1px solid #245728;background:rgba(8,18,9,.72);padding:10px 14px;border-radius:999px;color:#d9e5d9;font-size:13px}
+section{padding:75px 7%;position:relative}.section-title{text-align:center;font-size:38px;margin-bottom:42px}.section-title span{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1200px;margin:auto}
+.card{background:linear-gradient(180deg,#0c160e,#071008);border:1px solid #1b4d20;border-radius:18px;padding:28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.25);transition:.25s}.card:hover{transform:translateY(-7px);border-color:#39e91f;box-shadow:0 15px 45px rgba(35,220,0,.12)}
+.icon{font-size:45px;margin-bottom:16px;filter:drop-shadow(0 0 12px rgba(53,240,0,.35))}
+.card h3{font-size:19px;margin-bottom:10px}.card p{color:var(--muted);line-height:1.5;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;max-width:1100px;margin:auto}.step{text-align:center;position:relative}.num{width:44px;height:44px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#031000;font-weight:900;box-shadow:0 0 22px rgba(53,240,0,.3)}.step h3{margin-bottom:8px;color:#dfffd9}.step p{color:var(--muted);font-size:14px;line-height:1.5}
+.cta{max-width:1100px;margin:auto;padding:60px 30px;text-align:center;border:1px solid #2b742f;border-radius:24px;background:radial-gradient(circle at center,#102c12,#071008 65%);box-shadow:0 0 70px rgba(34,220,0,.08)}.cta h2{font-size:42px;margin-bottom:12px}.cta p{color:#b9c3b9;margin-bottom:28px}
+.notice{max-width:900px;margin:35px auto 0;padding:14px 18px;border:1px solid #3d4a3d;border-radius:12px;color:#aeb8ae;font-size:12px;line-height:1.5;text-align:center}
+footer{border-top:1px solid #152516;text-align:center;padding:25px;color:#697369;font-size:13px}
+@media(max-width:850px){nav .links{display:none}.grid,.steps{grid-template-columns:1fr 1fr}.hero{min-height:680px;padding:55px 6%}h1{font-size:52px}}
+@media(max-width:520px){.grid,.steps{grid-template-columns:1fr}.hero{background-position:60% center}.hero p{font-size:17px}}
+</style>
 </head>
-
 <body>
+<nav>
+  <div class="logo">EARN & <span>SHARE ROBUX</span></div>
+  <div class="links">
+    <a href="#inicio">INICIO</a><a href="#beneficios">BENEFICIOS</a><a href="#como">CÓMO FUNCIONA</a>
+  </div>
+  <a class="btn" href="#empezar">EMPEZAR</a>
+</nav>
 
-<h1>Gana Robux</h1>
+<header class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="eyebrow">ROBLOX • EARN & SHARE</div>
+    <h1>GANA <span>ROBUX</span><br>Y COMPÁRTELOS</h1>
+    <p>Una landing moderna y llamativa para presentar tu proyecto relacionado con Robux, con estilo gaming, efectos de brillo y diseño responsive.</p>
+    <a class="btn" href="#como">VER CÓMO FUNCIONA →</a>
+    <div class="badges"><div class="badge">🎮 Diseño gaming</div><div class="badge">⚡ Rápido y simple</div><div class="badge">📱 Responsive</div></div>
+  </div>
+</header>
 
-<h2>Robux disponibles: <span id="contador">3000000</span></h2>
+<section id="beneficios">
+  <h2 class="section-title">¿POR QUÉ <span>ELEGIRNOS?</span></h2>
+  <div class="grid">
+    <article class="card"><div class="icon">🛡️</div><h3>SEGURO</h3><p>Diseño pensado para transmitir confianza sin pedir contraseñas ni datos sensibles.</p></article>
+    <article class="card"><div class="icon">💚</div><h3>ROBUX</h3><p>Presenta claramente la propuesta de tu proyecto y sus características.</p></article>
+    <article class="card"><div class="icon">👥</div><h3>COMPARTE</h3><p>Una sección preparada para explicar cómo compartir o participar.</p></article>
+    <article class="card"><div class="icon">⚡</div><h3>RÁPIDO</h3><p>Interfaz ligera, adaptable a celular, tablet y computadora.</p></article>
+  </div>
+</section>
 
-<br>
+<section id="como">
+  <h2 class="section-title">¿CÓMO <span>FUNCIONA?</span></h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>PARTICIPA</h3><p>El usuario conoce las actividades disponibles.</p></div>
+    <div class="step"><div class="num">2</div><h3>COMPLETA</h3><p>Realiza las acciones que tu proyecto realmente ofrezca.</p></div>
+    <div class="step"><div class="num">3</div><h3>REVISA</h3><p>Comprueba el estado de la participación de forma transparente.</p></div>
+    <div class="step"><div class="num">4</div><h3>DISFRUTA</h3><p>Accede a los beneficios que tu proyecto pueda entregar legítimamente.</p></div>
+  </div>
+</section>
 
-<input type="text" id="usuario" placeholder="Nombre de usuario">
+<section id="empezar">
+  <div class="cta">
+    <h2>¿QUÉ ESPERAS?</h2>
+    <p>Haz que tu página deje de verse vacía y conviértela en una landing gaming mucho más atractiva.</p>
+    <a class="btn" href="#inicio">¡EMPEZAR AHORA! 🚀</a>
+  </div>
+  <div class="notice">Nota: esta plantilla es una interfaz visual. No representa una conexión oficial con Roblox ni garantiza la entrega de Robux. No solicites contraseñas de Roblox.</div>
+</section>
 
-<br>
-
-<input type="number" id="cantidad" placeholder="Cantidad de Robux">
-
-<br>
-
-<button onclick="enviar()">Enviar</button>
-
-<div id="mensaje"></div>
-
-<script>
-
-let robux = 3000000;
-
-function enviar(){
-
-let usuario = document.getElementById("usuario").value;
-let cantidad = Number(document.getElementById("cantidad").value);
-
-if(cantidad <= robux && cantidad > 0){
-
-robux = robux - cantidad;
-
-document.getElementById("contador").innerText = robux;
-let mensaje = document.getElementById("mensaje");
-
-mensaje.style.display = "block";
-mensaje.innerText = "Se enviaron " + cantidad + " Robux a " + usuario;
-
-}else{
-
-alert("No hay suficientes Robux");
-
-}
-
-}
-
-</script>
-
+<footer>© 2026 Earn & Share Robux • Proyecto web</footer>
 </body>
 </html>
